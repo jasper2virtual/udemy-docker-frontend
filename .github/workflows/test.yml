@@ -22,4 +22,4 @@ jobs:
       - name: Run tests in Docker container
         run: |
           docker build --build-arg USE_PROXY=false -f Dockerfile.dev -t vueapp-test .
-          docker run vueapp-test npm run test -- run
+          docker run -v /app/node_modules -v .:/app vueapp-test npm run test -- run
