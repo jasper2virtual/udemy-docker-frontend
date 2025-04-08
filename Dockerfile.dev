@@ -5,7 +5,10 @@ WORKDIR /app
 # Copy package.json
 COPY package.json .
 # Install dependencies
-RUN npm config set https-proxy http://proxy2.gld.hksarg:8080
-RUN npm config set proxy http://proxy2.gld.hksarg:8080
+ARG USE_PROXY=true
+RUN if [ "$USE_PROXY" = "true" ]; then \
+      npm config set https-proxy http://proxy2.gld.hksarg:8080 && \
+      npm config set proxy http://proxy2.gld.hksarg:8080; \
+    fi
 RUN rm -rf node_modules && npm install
 
