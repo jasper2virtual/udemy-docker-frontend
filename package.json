@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dockerdev": "vite --host",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest"
